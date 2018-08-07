@@ -18,7 +18,7 @@ var timeFormat = function(str, format) {
 Module.register("MMM-Timetable", {
   defaults: {
     //noscheduleMessage: "No schedule today", //reserved for next revision
-    timeFormat: "HH:mm A",
+    timeFormat: "hh:mm A",
     height: "800px",
     width: "150px",
     mode: "5days", // "today", "5days", "7days"
@@ -207,7 +207,7 @@ Module.register("MMM-Timetable", {
       var elm = document.createElement("div")
       elm.id = "time_" + item
       elm.className = "time"
-      elm.innerHTML = item
+      elm.innerHTML = timeFormat(item, this.config.timeFormat)
       elm.style.top = pos + "px"
       tline.appendChild(elm)
     }

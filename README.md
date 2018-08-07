@@ -2,7 +2,10 @@
 Display timetable for school or work.
 
 ### Screenshot
-[[PlaceHolder]]
+![screenshot](https://github.com/eouia/MMM-Timetable/blob/master/ttable_1.png?raw=true)
+
+![screenshot](https://github.com/eouia/MMM-Timetable/blob/master/ttable_2.png?raw=true)
+
 
 ### Installation
 

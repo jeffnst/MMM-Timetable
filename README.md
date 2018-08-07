@@ -44,7 +44,7 @@ git clone https://github.com/eouia/MMM-Timetable.git
           [4, "1300", "1400", "Rest", ""],
           [5, "1300", "1530", "Athletes", "Playground"],
           [1, "1500", "1840", "Joy Luck Club", "Class:1-A"],
-          [2, "1500", "1550", "Taekwondo school", "Dojo"],
+          [2, "1500", "1550", "Taekwondo school", "Gym"],
         ]
       },
       {

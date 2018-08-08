@@ -22,7 +22,6 @@ git clone https://github.com/eouia/MMM-Timetable.git
   module: "MMM-Timetable",
   position: "top_right",
   config: {
-    mode:"5days",
     timeFormat: "hh:mm A",
     height: "800px",
     width: "150px",

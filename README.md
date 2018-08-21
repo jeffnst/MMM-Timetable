@@ -27,6 +27,7 @@ git clone https://github.com/eouia/MMM-Timetable.git
     width: "150px",
     mode: "5days", // "today", "5days", "7days"
     refreshInterval: 1000*60,
+    displayEndTime:true, //whether display endTime on timeline or not.
     schedules: [ //array of schedules
       {
         title: "Slytherin 2nd Year",

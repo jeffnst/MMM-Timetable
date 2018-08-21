@@ -23,28 +23,56 @@ Module.register("MMM-Timetable", {
     width: "150px",
     mode: "5days", // "today", "5days", "7days"
     refreshInterval: 1000*60,
+    displayEndTime: false,
     schedules: [ //array of schedules
       {
-        title: "John's Timetable",
+        title: "Slytherin 2nd Year",
         schedule: [
           // [weekday, starttime(24h), endtime(24h), title, subtitle, backgroundColor(optional)]
           // weekday : 1 for Monday, 2 for Tuesday, ... 7 for Sunday
-          [1, "1000", "1130", "Mathmatics", "Class:1-B", "rgba(0,255,0, 0.5)"],
-          [2, "0930", "1100", "Physics", "Science room"],
-          [3, "1030", "1130", "Essay", "Class:1-B"],
-          [4, "0930", "1150", "Mathmatics", "Class:1-A"],
-          [5, "0930", "1130", "English", "Class:1-B"],
-          [1, "1300", "1430", "English", "Class:1-B"],
-          [2, "1300", "1430", "History", "Class:1-D", "rgba(0,255,255, 0.5)"],
-          [3, "1220", "1500", "Writing", "Class:1-C"],
-          [4, "1300", "1400", "Rest", ""],
-          [5, "1300", "1530", "Athletes", "Playground"],
-          [1, "1500", "1840", "Joy Luck Club", "Class:1-A"],
-          [2, "1500", "1550", "Taekwondo school", "Dojo"],
+					[1, "0730", "0900", "Breakfast", "", "rgba(0,255,0, 0.5)"],
+					[2, "0730", "0900", "Breakfast", "", "rgba(0,255,0, 0.5)"],
+					[3, "0730", "0900", "Breakfast", "", "rgba(0,255,0, 0.5)"],
+					[4, "0730", "0900", "Breakfast", "", "rgba(0,255,0, 0.5)"],
+					[5, "0730", "0900", "Breakfast", "", "rgba(0,255,0, 0.5)"],
+					[1, "1200", "1300", "Lunch", "", "rgba(0,255,0, 0.5)"],
+					[2, "1200", "1300", "Lunch", "", "rgba(0,255,0, 0.5)"],
+					[3, "1200", "1300", "Lunch", "", "rgba(0,255,0, 0.5)"],
+					[4, "1200", "1300", "Lunch", "", "rgba(0,255,0, 0.5)"],
+					[5, "1200", "1300", "Lunch", "", "rgba(0,255,0, 0.5)"],
+					[1, "1800", "1900", "Dinner", "", "rgba(0,255,0, 0.5)"],
+					[2, "1800", "1900", "Dinner", "", "rgba(0,255,0, 0.5)"],
+					[3, "1800", "1900", "Dinner", "", "rgba(0,255,0, 0.5)"],
+					[4, "1800", "1900", "Dinner", "", "rgba(0,255,0, 0.5)"],
+					[5, "1800", "1900", "Dinner", "", "rgba(0,255,0, 0.5)"],
+					[1, "1100", "1145", "Transfiguration", "w/Ravenclaw"],
+					[1, "1315", "1400", "Charms", "w/Hufflepuff"],
+					[2, "0915", "1045", "Transfiguration", "w/Ravenclaw"],
+					[2, "1500", "1630", "Herbology", "w/Ravenclaw"],
+					[3, "0915", "1045", "Defense Against The Dark Art", "w/Gryffindor", "rgba(255,0,0,0.5)"],
+					[3, "1100", "1145", "Charms", "w/Hufflepuff"],
+					[3, "1315", "1445", "History of Magic", "w/Hufflepuff"],
+					[3, "1500", "1630", "Potions", "w/Gryffindor"],
+					[4, "1100", "1145", "Defense Against The Dark Art", "w/Gryffindor"],
+					[5, "1315", "1400", "Potions", "w/Gryffindor"],
         ]
       },
-
-    ]
+      {
+        title: "Slytherin 2nd Year (classes)",
+        schedule: [
+					[1, "1100", "1145", "Transfiguration", "w/Ravenclaw"],
+					[1, "1315", "1400", "Charms", "w/Hufflepuff"],
+					[2, "0915", "1045", "Transfiguration", "w/Ravenclaw"],
+					[2, "1500", "1630", "Herbology", "w/Ravenclaw"],
+					[3, "0915", "1045", "Defense Against The Dark Art", "w/Gryffindor", "rgba(255,0,0,0.5)"],
+					[3, "1100", "1145", "Charms", "w/Hufflepuff"],
+					[3, "1315", "1445", "History of Magic", "w/Hufflepuff"],
+					[3, "1500", "1630", "Potions", "w/Gryffindor"],
+					[4, "1100", "1145", "Defense Against The Dark Art", "w/Gryffindor"],
+					[5, "1315", "1400", "Potions", "w/Gryffindor"],
+        ]
+      },
+		]
   },
 
   getStyles: function() {
@@ -167,7 +195,10 @@ Module.register("MMM-Timetable", {
             validItem[item[0]] = []
           }
           validItem[item[0]].push(item)
-          tlItem.add(item[1]).add(item[2])
+          tlItem.add(item[1])
+          if (this.config.displayEndTime) {
+            tlItem.add(item[2])
+          }
         }
       } else if (this.config.mode == '5days') {
         if (item[0] <= 5) {
@@ -175,14 +206,20 @@ Module.register("MMM-Timetable", {
             validItem[item[0]] = []
           }
           validItem[item[0]].push(item)
-          tlItem.add(item[1]).add(item[2])
+          tlItem.add(item[1])
+          if (this.config.displayEndTime) {
+            tlItem.add(item[2])
+          }
         }
       } else {
         if(typeof validItem[item[0]] == "undefined") {
           validItem[item[0]] = []
         }
         validItem[item[0]].push(item)
-        tlItem.add(item[1]).add(item[2])
+        tlItem.add(item[1])
+        if (this.config.displayEndTime) {
+          tlItem.add(item[2])
+        }
       }
     }
     var tl = Array.from(tlItem).sort()

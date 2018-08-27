@@ -22,7 +22,7 @@ Module.register("MMM-Timetable", {
     height: "800px",
     width: "150px",
     mode: "5days", // "today", "5days", "7days"
-    refreshInterval: 1000*60,
+    refreshInterval: 1000*10,
     displayEndTime: false,
     schedules: [ //array of schedules
       {
@@ -36,7 +36,8 @@ Module.register("MMM-Timetable", {
 					[4, "0730", "0900", "Breakfast", "", "rgba(0,255,0, 0.5)"],
 					[5, "0730", "0900", "Breakfast", "", "rgba(0,255,0, 0.5)"],
 					[1, "1200", "1300", "Lunch", "", "rgba(0,255,0, 0.5)"],
-					[2, "1200", "1300", "Lunch", "", "rgba(0,255,0, 0.5)"],
+					[2, "1200", "1220", "Lunch", "", "rgba(0,255,0, 0.5)"],
+          [2, "1243", "1245", "Lunch", "", "rgba(0,255,0, 0.5)"],
 					[3, "1200", "1300", "Lunch", "", "rgba(0,255,0, 0.5)"],
 					[4, "1200", "1300", "Lunch", "", "rgba(0,255,0, 0.5)"],
 					[5, "1200", "1300", "Lunch", "", "rgba(0,255,0, 0.5)"],
@@ -57,21 +58,7 @@ Module.register("MMM-Timetable", {
 					[5, "1315", "1400", "Potions", "w/Gryffindor"],
         ]
       },
-      {
-        title: "Slytherin 2nd Year (classes)",
-        schedule: [
-					[1, "1100", "1145", "Transfiguration", "w/Ravenclaw"],
-					[1, "1315", "1400", "Charms", "w/Hufflepuff"],
-					[2, "0915", "1045", "Transfiguration", "w/Ravenclaw"],
-					[2, "1500", "1630", "Herbology", "w/Ravenclaw"],
-					[3, "0915", "1045", "Defense Against The Dark Art", "w/Gryffindor", "rgba(255,0,0,0.5)"],
-					[3, "1100", "1145", "Charms", "w/Hufflepuff"],
-					[3, "1315", "1445", "History of Magic", "w/Hufflepuff"],
-					[3, "1500", "1630", "Potions", "w/Gryffindor"],
-					[4, "1100", "1145", "Defense Against The Dark Art", "w/Gryffindor"],
-					[5, "1315", "1400", "Potions", "w/Gryffindor"],
-        ]
-      },
+
 		]
   },
 
@@ -187,8 +174,12 @@ Module.register("MMM-Timetable", {
     var oHeight = document.getElementById("TTABLE_TIMELINE").offsetHeight
     var validItem = {}
     var tlItem = new Set()
+    var maxTl = null
     for(var i in schedule.schedule) {
       var item = schedule.schedule[i]
+      if (maxTl <= item[2]) {
+        maxTl = item[2]
+      }
       if (this.config.mode == 'today') {
         if (item[0] == this.today || item[0] == 0) {
           if(typeof validItem[item[0]] == "undefined") {
@@ -221,6 +212,7 @@ Module.register("MMM-Timetable", {
           tlItem.add(item[2])
         }
       }
+      tlItem.add(maxTl)
     }
     var tl = Array.from(tlItem).sort()
     var start = convertTime(tl.shift())

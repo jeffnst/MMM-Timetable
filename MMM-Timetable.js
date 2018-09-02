@@ -19,7 +19,7 @@ Module.register("MMM-Timetable", {
   defaults: {
     //noscheduleMessage: "No schedule today", //reserved for next revision
     timeFormat: "hh:mm A",
-    height: "800px",
+    height: "700px",
     width: "150px",
     mode: "5days", // "today", "5days", "7days"
     refreshInterval: 1000*10,
@@ -181,6 +181,7 @@ Module.register("MMM-Timetable", {
       if (maxTl <= item[2]) {
         maxTl = item[2]
       }
+
       if (this.config.mode == 'today') {
         if (item[0] == this.today || item[0] == 0) {
           if(typeof validItem[item[0]] == "undefined") {
@@ -241,7 +242,6 @@ Module.register("MMM-Timetable", {
       elm.style.top = pos + "px"
       tline.appendChild(elm)
     }
-
 
     for(var i in validItem) {
       var day = document.getElementById("TTABLE_DAY_" + i)
@@ -320,8 +320,8 @@ Module.register("MMM-Timetable", {
           for(var i = 0; i < lines.length; i++) {
             var line = lines[i]
             if (line != "") {
-              var a = line.split(";")
-              res.push(a)
+              var a = this.CSVToArray(line, ",")
+              res.push(a[0])
             }
           }
           schedule.schedule = res
@@ -331,5 +331,39 @@ Module.register("MMM-Timetable", {
     }
     xmlHttp.open("GET", url, true)
     xmlHttp.send(null)
+  },
+
+  //Thanks to https://www.bennadel.com/blog/1504-ask-ben-parsing-csv-strings-with-javascript-exec-regular-expression-command.htm
+  CSVToArray: function (strData, strDelimiter){
+    strDelimiter = (strDelimiter || ",")
+    var objPattern = new RegExp(
+      (
+        "(\\" + strDelimiter + "|\\r?\\n|\\r|^)" +
+        "(?:\"([^\"]*(?:\"\"[^\"]*)*)\"|" +
+        "([^\"\\" + strDelimiter + "\\r\\n]*))"
+      ),
+      "gi"
+      )
+    var arrData = [[]]
+    var arrMatches = null
+    while (arrMatches = objPattern.exec( strData )){
+      var strMatchedDelimiter = arrMatches[ 1 ]
+      if (
+        strMatchedDelimiter.length &&
+        (strMatchedDelimiter != strDelimiter)
+        ){
+        arrData.push( [] )
+      }
+      if (arrMatches[ 2 ]){
+        var strMatchedValue = arrMatches[ 2 ].replace(
+          new RegExp( "\"\"", "g" ),
+          "\""
+          )
+      } else {
+        var strMatchedValue = arrMatches[ 3 ]
+      }
+      arrData[ arrData.length - 1 ].push( strMatchedValue )
+    }
+    return( arrData )
   }
 })

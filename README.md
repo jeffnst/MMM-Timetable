@@ -82,3 +82,6 @@ git clone https://github.com/eouia/MMM-Timetable.git
 },
 
 ```
+
+3. Warning.
+When you use CSV(comma separated), check time format. use "0900" instead "900".

@@ -1,0 +1,26 @@
+1;0730;0900;Breakfast;;rgba(0,255,0,0.5)
+2;0730;0900;Breakfast;;rgba(0,255,0,0.5)
+3;0730;0900;Breakfast;;rgba(0,255,0,0.5)
+4;0730;0900;Breakfast;;rgba(0,255,0,0.5)
+5;0730;0900;Breakfast;;rgba(0,255,0,0.5)
+1;1200;1300;Lunch;;rgba(0,255,0,0.5)
+2;1200;1220;Lunch;;rgba(0,255,0,0.5)
+2;1243;1245;Lunch;;rgba(0,255,0,0.5)
+3;1200;1300;Lunch;;rgba(0,255,0,0.5)
+4;1200;1300;Lunch;;rgba(0,255,0,0.5)
+5;1200;1300;Lunch;;rgba(0,255,0,0.5)
+1;1800;1900;Dinner;;rgba(0,255,0,0.5)
+2;1800;1900;Dinner;;rgba(0,255,0,0.5)
+3;1800;1900;Dinner;;rgba(0,255,0,0.5)
+4;1800;1900;Dinner;;rgba(0,255,0,0.5)
+5;1800;1900;Dinner;;rgba(0,255,0,0.5)
+1;1100;1145;Transfiguration;w/Ravenclaw
+1;1315;1400;Charms;w/Hufflepuff
+2;0915;1045;Transfiguration;w/Ravenclaw
+2;1500;1630;Herbology;w/Ravenclaw
+3;0915;1045;Defense Against The Dark Art;w/Gryffindor;rgba(255,0,0,0.5)
+3;1100;1145;Charms;w/Hufflepuff
+3;1315;1445;History of Magic;w/Hufflepuff
+3;1500;1630;Potions;w/Gryffindor
+4;1100;1145;Defense Against The Dark Art;w/Gryffindor
+5;1315;1400;Potions;w/Gryffindor

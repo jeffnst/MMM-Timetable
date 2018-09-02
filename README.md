@@ -31,6 +31,7 @@ git clone https://github.com/eouia/MMM-Timetable.git
     schedules: [ //array of schedules
       {
         title: "Slytherin 2nd Year",
+        file: null, // or "test.csv" with semicolon seperated text file. (see `test.csv`)
         schedule: [
           // [weekday, starttime(24h), endtime(24h), title, subtitle, backgroundColor(optional)]
           // weekday : 1 for Monday, 2 for Tuesday, ... 7 for Sunday
